@@ -1,0 +1,107 @@
+mysql> CREATE DATABASE hotel;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE hotel;
+Database changed
+mysql> CREATE TABLE floor (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> ALTER TABLE floor ADD COLUMN level INT;                                                                                          
+Query OK, 0 rows affected (0.36 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE floor ADD COLUMN numberOfUnrentableRooms INT;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE floor ADD COLUMN numberOfRentableRooms INT;                                                                           
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE floor;
++-------------------------+---------+------+-----+---------+----------------+
+| Field                   | Type    | Null | Key | Default | Extra          |
++-------------------------+---------+------+-----+---------+----------------+
+| id                      | int(11) | NO   | PRI | NULL    | auto_increment |
+| level                   | int(11) | YES  |     | NULL    |                |
+| numberOfUnrentableRooms | int(11) | YES  |     | NULL    |                |
+| numberOfRentableRooms   | int(11) | YES  |     | NULL    |                |
++-------------------------+---------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE room (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> ALTER TABLE room  ADD COLUMN floorId INT;                                                                  
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE room  ADD COLUMN numberOfBeds INT;
+Query OK, 0 rows affected (0.37 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE room  ADD COLUMN capacityOfOccupation INT;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE room  ADD COLUMN isAvailable TINYINT (1);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE room  ADD COLUMN isCarpetOnTheFloor TINYINT (1);                                                                      
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE room;
++----------------------+------------+------+-----+---------+----------------+
+| Field                | Type       | Null | Key | Default | Extra          |
++----------------------+------------+------+-----+---------+----------------+
+| id                   | int(11)    | NO   | PRI | NULL    | auto_increment |
+| floorId              | int(11)    | YES  |     | NULL    |                |
+| numberOfBeds         | int(11)    | YES  |     | NULL    |                |
+| capacityOfOccupation | int(11)    | YES  |     | NULL    |                |
+| isAvailable          | tinyint(1) | YES  |     | NULL    |                |
+| isCarpetOnTheFloor   | tinyint(1) | YES  |     | NULL    |                |
++----------------------+------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE room  ADD COLUMN hasAPrivateKitchen TINYINT (1);                                                                      
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE unrentableRoom (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> ALTER TABLE unrentableRoom ADD COLUMN floorId INT;                                                 
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE unrentableRoom ADD COLUMN numberOfWindows INT;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE unrentableRoom ADD COLUMN type ENUM('janitor closets','public laundry room', 'gym', 'restaurant', 'wc', 'hall', 'other');
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE unrentableRoom;
++-----------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field           | Type                                                                                 | Null | Key | Default | Extra          |
++-----------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+
+| id              | int(11)                                                                              | NO   | PRI | NULL    | auto_increment |
+| floorId         | int(11)                                                                              | YES  |     | NULL    |                |
+| numberOfWindows | int(11)                                                                              | YES  |     | NULL    |                |
+| type            | enum('janitor closets','public laundry room','gym','restaurant','wc','hall','other') | YES  |     | NULL    |                |
++-----------------+--------------------------------------------------------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> 
