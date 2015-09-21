@@ -1,0 +1,34 @@
+//Create table Account for database decodemtl_addressbook
+mysql> use decodemtl_addressbook
+Database changed
+mysql> CREATE TABLE Account;
+ERROR 1113 (42000): A table must have at least 1 column
+mysql> CREATE TABLE Account (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
+//Create table AddressBook for database decodemtl_addressbook
+mysql> CREATE TABLE AddressBook (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
+//Create table Entry for database decodemtl_addressbook
+mysql> CREATE TABLE Entry (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+//Create table Test for database decodemtl_addressbook
+mysql> CREATE TABLE Test (
+    -> id int NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
