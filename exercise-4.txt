@@ -1,12 +1,18 @@
+Return the list of databases within MySQL :
+
 mysql> SHOW DATABASES;
 +-----------------------+
 | Database              |
 +-----------------------+
 | information_schema    |
+| BarnWithChickens      |
 | c9                    |
 | decodemtl_addressbook |
+| hotel                 |
 | mysql                 |
 | performance_schema    |
 | world                 |
 +-----------------------+
-6 rows in set (0.00 sec)
+8 rows in set (0.00 sec)
+
+mysql> 
