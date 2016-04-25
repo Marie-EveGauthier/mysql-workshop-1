@@ -107,14 +107,9 @@ mysql> ALTER TABLE AddressBook ADD COLUMN accountId INT;
 Query OK, 0 rows affected (0.01 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESCRIBE AddressBook;
-+-----------+---------+------+-----+---------+----------------+
-| Field     | Type    | Null | Key | Default | Extra          |
-+-----------+---------+------+-----+---------+----------------+
-| id        | int(11) | NO   | PRI | NULL    | auto_increment |
-| accountId | int(11) | YES  |     | NULL    |                |
-+-----------+---------+------+-----+---------+----------------+
-2 rows in set (0.00 sec)
+mysql>  ALTER TABLE AddressBook ADD FOREIGN KEY (accountId) REFERENCES Account(id);                                                   
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> ALTER TABLE AddressBook ADD COLUMN name VARCHAR(255);
 Query OK, 0 rows affected (0.02 sec)
@@ -128,12 +123,12 @@ mysql> ALTER TABLE AddressBook ADD COLUMN modifiedOn DATETIME;
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESCRIBE AddressBook;
+mysql> describe AddressBook;
 +------------+--------------+------+-----+---------+----------------+
 | Field      | Type         | Null | Key | Default | Extra          |
 +------------+--------------+------+-----+---------+----------------+
 | id         | int(11)      | NO   | PRI | NULL    | auto_increment |
-| accountId  | int(11)      | YES  |     | NULL    |                |
+| accountId  | int(11)      | YES  | MUL | NULL    |                |
 | name       | varchar(255) | YES  |     | NULL    |                |
 | createdOn  | datetime     | YES  |     | NULL    |                |
 | modifiedOn | datetime     | YES  |     | NULL    |                |
@@ -162,6 +157,10 @@ mysql> DESCRIBE Entry;
 
 mysql> ALTER TABLE Entry ADD COLUMN addressBookId INT;
 Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  ALTER TABLE Entry ADD FOREIGN KEY (addressBookId) REFERENCES AddressBook(id);                                                 
+Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> ALTER TABLE Entry ADD COLUMN fisrtName VARCHAR(255);                           
@@ -204,21 +203,21 @@ mysql> ALTER TABLE Entry ADD COLUMN contentLinFive VARCHAR(255);
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESCRIBE Entry;
+mysql> describe Entry;
 +------------------+---------------------------------+------+-----+---------+----------------+
 | Field            | Type                            | Null | Key | Default | Extra          |
 +------------------+---------------------------------+------+-----+---------+----------------+
 | id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
-| addressBookId    | int(11)                         | YES  |     | NULL    |                |
-| fisrtName        | varchar(255)                    | YES  |     | NULL    |                |
+| addressBookId    | int(11)                         | YES  | MUL | NULL    |                |
+| firstName        | varchar(255)                    | YES  |     | NULL    |                |
 | lastName         | varchar(255)                    | YES  |     | NULL    |                |
 | birthday         | datetime                        | YES  |     | NULL    |                |
-| type             | enum('home','work',' other')    | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | YES  |     | NULL    |                |
 | subtype          | enum('phone','address','email') | YES  |     | NULL    |                |
 | contentLineOne   | varchar(255)                    | YES  |     | NULL    |                |
 | contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
 | contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
-| contentLinFour   | varchar(255)                    | YES  |     | NULL    |                |
-| contentLinFive   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
 +------------------+---------------------------------+------+-----+---------+----------------+
 12 rows in set (0.00 sec)
