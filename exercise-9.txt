@@ -26,17 +26,18 @@ mysql> ALTER TABLE Chickens ADD COLUMN dateOfDeath DATETIME;
 Query OK, 0 rows affected (0.34 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> ALTER TABLE Chickens ADD COLUMN sex VARCHAR(1);                                                                                   
+mysql> ALTER TABLE Chickens ADD COLUMN gender ENUM("male", "female");                                                                                   
 Query OK, 0 rows affected (0.07 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESCRIBE Chickens;
-+----------------+------------+------+-----+---------+----------------+
-| Field          | Type       | Null | Key | Default | Extra          |
-+----------------+------------+------+-----+---------+----------------+
-| id             | int(11)    | NO   | PRI | NULL    | auto_increment |
-| dateOfHatching | datetime   | YES  |     | NULL    |                |
-| dateOfDeath    | datetime   | YES  |     | NULL    |                |
-| sex            | varchar(1) | YES  |     | NULL    |                |
-+----------------+------------+------+-----+---------+----------------+
+
+mysql> describe Chickens;
++----------------+-----------------------+------+-----+---------+----------------+
+| Field          | Type                  | Null | Key | Default | Extra          |
++----------------+-----------------------+------+-----+---------+----------------+
+| id             | int(11)               | NO   | PRI | NULL    | auto_increment |
+| dateOfHatching | datetime              | YES  |     | NULL    |                |
+| dateOfDeath    | datetime              | YES  |     | NULL    |                |
+| gender         | enum('male','female') | YES  |     | NULL    |                |
++----------------+-----------------------+------+-----+---------+----------------+
 4 rows in set (0.00 sec)
