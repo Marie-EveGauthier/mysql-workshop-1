@@ -1,0 +1,36 @@
+Remove database named decodemtl_test from MySQL:
+
+
+mysql> SHOW DATABASES;
++-----------------------+
+| Database              |
++-----------------------+
+| information_schema    |
+| BarnWithChickens      |
+| c9                    |
+| decodemtl_addressbook |
+| decodemtl_test        |
+| hotel                 |
+| mysql                 |
+| performance_schema    |
+| world                 |
++-----------------------+
+9 rows in set (0.00 sec)
+
+mysql> DROP DATABASE decodemtl_test;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW DATABASES;
++-----------------------+
+| Database              |
++-----------------------+
+| information_schema    |
+| BarnWithChickens      |
+| c9                    |
+| decodemtl_addressbook |
+| hotel                 |
+| mysql                 |
+| performance_schema    |
+| world                 |
++-----------------------+
+8 rows in set (0.00 sec)
