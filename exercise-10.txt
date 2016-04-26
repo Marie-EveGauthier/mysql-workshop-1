@@ -158,3 +158,56 @@ mysql> describe date;
 | dateTo   | datetime | YES  |     | NULL    |                |
 +----------+----------+------+-----+---------+----------------+
 5 rows in set (0.19 sec)
+
+mysql> RENAME TABLE `date` TO `reservations`;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SHOW TABLES;
++-----------------+
+| Tables_in_hotel |
++-----------------+
+| floor           |
+| reservations    |
+| room            |
+| unrentableRoom  |
++-----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe reservations;
++----------+----------+------+-----+---------+----------------+
+| Field    | Type     | Null | Key | Default | Extra          |
++----------+----------+------+-----+---------+----------------+
+| id       | int(11)  | NO   | PRI | NULL    | auto_increment |
+| date     | datetime | YES  |     | NULL    |                |
+| roomId   | int(11)  | YES  | MUL | NULL    |                |
+| dateFrom | datetime | YES  |     | NULL    |                |
+| dateTo   | datetime | YES  |     | NULL    |                |
++----------+----------+------+-----+---------+----------------+
+5 rows in set (0.12 sec)
+
+mysql> ALTER TABLE `reservations` CHANGE COLUMN `date` `madeAt` DATETIME  NOT NULL;                                                                           
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE reservations ADD COLUMN numPerson INT;                                                                                                     
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE reservations ADD COLUMN isPaid  TINYINT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE reservations
+    -> ;
++-----------+------------+------+-----+---------+----------------+
+| Field     | Type       | Null | Key | Default | Extra          |
++-----------+------------+------+-----+---------+----------------+
+| id        | int(11)    | NO   | PRI | NULL    | auto_increment |
+| madeAt    | datetime   | NO   |     | NULL    |                |
+| roomId    | int(11)    | YES  | MUL | NULL    |                |
+| dateFrom  | datetime   | YES  |     | NULL    |                |
+| dateTo    | datetime   | YES  |     | NULL    |                |
+| numPerson | int(11)    | YES  |     | NULL    |                |
+| isPaid    | tinyint(4) | YES  |     | NULL    |                |
++-----------+------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
